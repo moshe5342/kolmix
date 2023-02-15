@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="aboutAndContact.css">
+    <title>אודות&צור קשר</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <header class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="burger">
+                <svg id="burger_btn" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+                <a href="https://www.kolmix.co.il"><img src="images/logo.png" alt="logo" width="90px"></a>
+                <a href="#" class="space">space</a>
+            </div>
+            <nav id="nav_open" class="text-center">
+                <a href="https://www.kolmix.co.il">ראשי</a>
+                <a href="playbacks.html">פלייבקים</a>
+                <!-- need to connect to google api -->
+                <a href="#">התחברות/הרשמה</a>
+                <!-- need to link to home page -->
+                <a href="https://www.kolmix.co.il"><img src="images/logo.png" alt="logo"></a>
+                <a href="tel:02-6419996">התקשר עכשיו: 02-6419996</a>
+                <a href="tel:054-8427330">054-8427330</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-fluid text-center d-flex justify-content-center align-items-center">
+        <div class="container aboutAndContact">
+            <div class="about d-flex align-items-center">
+                <p>
+                    אולפן <b>קולמיקס</b> הינו אולפן מקצועי המספק שירותי הקלטות ללקוחות פרטיים ומוסדות...
+                    <br>
+                    בזכות ניסיון רב וסבלנות רבה אנחנו משתדלים תמיד להגיע לתוצאה הטובה ביותר ובמחיר שיתאים
+                    לכולם...
+                    <br>
+                    מוזמנים😊
+                    <br>
+                    <b>כתובתינו: </b>נריה הנביא 50
+                    <br>
+                    רמת בית שמש ג
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13577.933106000322!2d34.9801161!3d31.7026911!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x99e8897809845474!2z16fXldec157Xmden16EgLSDXkNeV15zXpNefINeU16fXnNeY15XXqg!5e0!3m2!1siw!2sil!4v1662473684464!5m2!1siw!2sil"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </p>
+            </div>
+            <div class="contact d-flex align-items-center">
+                <form id="contactForm" class="form">
+                    <h3>טופס יצירת קשר:</h3>
+                    <label for="fullname">שם ומשפחה:</label>
+                    <br>
+                    <input oninput="enableSubmitBtn()" type="text" id="fullname" name="fullname" required
+                        placeholder="* שדה חובה">
+                    <br>
+                    <label for="tel">טלפון:</label>
+                    <br>
+                    <input onkeypress="return onlyNumberKey(event)" oninput="enableSubmitBtn()" type="tel" id="tel"
+                        name="tel" required maxlength="10" placeholder="* שדה חובה">
+                    <br>
+                    <label for="email">אימייל:</label>
+                    <br>
+                    <input oninput="enableSubmitBtn()" type="email" id="email" name="email">
+                    <br>
+                    <label for="fullname">נושא:</label>
+                    <br>
+                    <input type="text" id="subject" name="subject">
+                    <br>
+                    <span>*משתדלים לענות במהירות האפשרית</span>
+                    <br>
+                    <button onclick="postContactForm(event)" id="submitBtn" type="submit" disabled>שלח טופס</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="remove-all-margin-padding-bk-white container-fluid d-flex text-center">
+        <div class="container">
+            <div class="links">
+                <a href="aboutAndContact.html">אודות & צור קשר</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- floating cart -->
+    <a href="#">
+        <div class="shopping_cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
+                viewBox="0 0 16 16">
+                <path
+                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+        </div>
+    </a>
+
+    <!-- floating language -->
+    <a href="https://www.kolmix.co.il/en">
+        <div class="float_language">EN</div>
+    </a>
+
+    <!-- floating whatsapp -->
+    <a href="https://wa.me/972548427330?text=בקשר+לאולפן+ההקלטות..." class="whatsApp" target="_blank"><i
+            class="fa fa-whatsapp my-whatsApp"></i>
+    </a>
+
+    <script src="burgerAndToggleWidth.js"></script>
+    <script src="lightBox.js"></script>
+    <script src="forms.js"></script>
+</body>
+
+</html>
