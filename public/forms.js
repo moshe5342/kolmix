@@ -34,7 +34,7 @@ const postContactForm = async (event) => {
         email: emailField.value,
         subject: subjectField.value,
     }
-    let url = 'http://localhost:3000/contactForms';
+    let url = 'contactForms';
     try {
         let resp = await axios.post(url, contactFormDetails);
         alert('הטופס נשלח בהצלחה');
@@ -55,7 +55,7 @@ const postRequestRecordForm = async (event) => {
         date: dateField.value,
         time: timeField.value,
     }
-    let url = 'http://localhost:3000/requestRecordForms';
+    let url = 'requestRecordForms';
     try {
         let resp = await axios.post(url, requestRecordFormDetails);
         alert('הטופס נשלח בהצלחה');

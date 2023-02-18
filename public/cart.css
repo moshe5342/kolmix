@@ -43,9 +43,61 @@ header nav a:hover {
     color: purple;
 }
 
+header nav .userAreaAfterLogin {
+    display: none;
+}
+
+#checkoutArea {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+
+#sumOrder, #cartBodyTitle {
+    display: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#paypalArea {
+    size: 300px;
+}
+
+#id_row {
+    margin-bottom: 50px;
+    margin-top: 15px;
+}
+
+#id_row button {
+    background-color: rgb(212, 37, 90);
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.ifCartEmpty {
+    margin: auto auto;
+    text-align: center;
+    font-size: 4rem;
+    width: 60%;
+    border: 3px solid #ad2196;
+    padding: 10px;
+}
+
+.ifCartEmpty a{
+    margin: auto auto;
+    text-align: center;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #e23f83;
+  }
+
 footer {
     /* position: sticky; - some times is better */
-    position: absolute; 
+    position: absolute;
     bottom: 0;
 }
 
@@ -66,20 +118,27 @@ footer a:hover {
 }
 
 /* floating cart */
-.shopping_cart .bi-cart4 {
+.shopping_cart .badge {
     position: fixed;
-    width: 40px;
-    height: 40px;
-    top: 120px;
-    left: 25px;
+    top: 17px;
+    left: 17px;
     color: #47024d;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     z-index: 100;
-    border: 3px solid gray;
-    border-radius: 10%;
-    padding: 0 4px 4px 4px;
-    background-color: rgb(214, 15, 118);
+}
+
+.badge:after{
+    content:attr(value);
+    font-size:15px;
+    color: #fff;
+    background: red;
+    border-radius:50%;
+    padding:1px 5px 2px 5px;
+    position:relative;
+    left:-8px;
+    top:-10px;
+    opacity:0.9;
 }
 
 /* floating whatsapp */

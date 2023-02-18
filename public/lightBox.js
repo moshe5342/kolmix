@@ -64,7 +64,7 @@ const postUser = async (event) => {
         password: signupPasswordField.value,
         newsletterConfirm: signupNewsletterConfirmCheckbox.checked,
     }
-    let url = 'http://localhost:3000/users';
+    let url = 'users';
     try {
         let resp = await axios.post(url, userDetails);
         alert('ההרשמה בוצעה בהצלחה, נא הזינו את כתובת האימייל והסיסמה בחלון ההתחברות');
@@ -86,7 +86,7 @@ const postLogin = async (event) => {
         email: loginEmailField.value,
         password: loginPasswordField.value,
     }
-    let url = 'http://localhost:3000/users/login';
+    let url = 'users/login';
     try {
         let resp = await axios.post(url, loginDetails);
         localStorage.setItem('token', resp.data.token);
@@ -101,20 +101,31 @@ const postLogin = async (event) => {
 }
 
 const receiveUserData = async () => {
-    let url = 'http://localhost:3000/users/userInfo';
+    let url = 'users/userInfo';
     try {
         let resp = await axios.get(url, { headers: { 'x-api-key': localStorage.getItem('token') } });
-        console.log(resp.data);
-        document.querySelector('#loginSignupLink').style.display = 'none';
-        document.querySelector('.lightBox').style.display = 'none';
-        document.querySelector('#userName').style.display = 'inline';
-        let firstName = resp.data.fullname.split(' ');
-        document.querySelector('#userName').innerHTML = 'שלום ' + firstName[0];
-        document.querySelector('#logoutBtn').style.display = 'inline';
-        // alert('אחלה התחברות שבעולם');
+        localStorage.setItem('name', resp.data.fullname.split(' ')[0]);
+        location.reload();
     }
     catch (err) {
         console.log(err);
         alert('כתובת האימייל או הסיסמה שגויים');
     }
+}
+
+const receiveUserDataInAnotherPages = () => {
+    if (localStorage.getItem('name') != null) {
+        document.querySelector('#loginSignupLink').style.display = 'none';
+        document.querySelector('#userName').style.display = 'inline';
+        document.querySelector('#userName').innerHTML = 'שלום ' + localStorage.getItem('name');
+        document.querySelector('#logoutBtn').style.display = 'inline';
+    }
+}
+
+receiveUserDataInAnotherPages();
+
+const logout = () =>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    location.reload();
 }

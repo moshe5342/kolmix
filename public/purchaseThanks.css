@@ -48,6 +48,10 @@ header nav a:hover {
     color: purple;
 }
 
+header nav .userAreaAfterLogin {
+    display: none;
+}
+
 .jumbotron {
     margin-top: 100px;
 }

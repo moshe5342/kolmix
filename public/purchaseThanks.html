@@ -10,11 +10,68 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="purchaseThanks.css">
+    <link rel="stylesheet" href="lightBox.css">
     <title>תודה על הרכישה</title>
 </head>
 
 <body>
-    <!-- container-fluid d-flex text-center justify-content-center align-items-center -->
+    <!-- logIn sinUp light box -->
+    <div class="lightBox">
+        <div class="lightBoxInside">
+            <div class="logIn">
+                <form id="loginForm">
+                    <h3>התחברות</h3>
+                    <label for="email">כתובת אימייל:</label>
+                    <br>
+                    <input oninput="enableLoginSubmitBtn()" type="email" id="loginEmail" name="email" required
+                        placeholder="* שדה חובה">
+                    <br>
+                    <label for="password">סיסמה:</label><br>
+                    <input oninput="enableLoginSubmitBtn()" type="password" id="loginPassword" name="password" required
+                        placeholder="* שדה חובה">
+                    <br>
+                    <br>
+                    <button onclick="postLogin(event)" id="loginBtn" type="submit" disabled>התחבר</button>
+                </form>
+            </div>
+            <div class="signUp">
+                <form id="signupForm">
+                    <h3>הרשמה</h3>
+                    <label for="fullName">שם מלא:</label>
+                    <br>
+                    <input oninput="enableSignupSubmitBtn()" type="text" id="signupFullName" name="fullName" required
+                        placeholder="* שדה חובה">
+                    <br>
+                    <label for="email">כתובת אימייל:</label>
+                    <br>
+                    <input oninput="enableSignupSubmitBtn()" type="email" id="signupEmail" name="email" required
+                        placeholder="* שדה חובה">
+                    <br>
+                    <label for="password">סיסמה:</label><br>
+                    <input oninput="enableSignupSubmitBtn()" type="password" id="signupPassword" name="password"
+                        required placeholder="* שדה חובה">
+                    <br>
+                    <label for="password">אימות סיסמה:</label><br>
+                    <input oninput="enableSignupSubmitBtn()" type="password" id="signupConfirmPassword"
+                        name="confirmPassword" required placeholder="* שדה חובה">
+                    <div id="confirmPassword-feedback">
+                        <br>
+                        <span>* סיסמאות לא תואמות</span>
+                    </div>
+                    <br>
+                    <input type="checkbox" id="signupNewsletterConfirm" name="newsletterConfirm">
+                    <label for="newsletterConfirm">רוצה לשמוע על מבצעים מיוחדים!</label>
+                    <br>
+                    <br>
+                    <button onclick="postUser(event)" id="signupBtn" type="submit" disabled>הרשם</button>
+                </form>
+            </div>
+            <div class="close-btn">
+                <span onclick="hideLightBox()">&times;</span>
+            </div>
+        </div>
+    </div>
+
     <header class="container-fluid d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="burger">
@@ -23,16 +80,16 @@
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
-                <a href="https://www.kolmix.co.il"><img src="images/logo.png" alt="logo" width="90px"></a>
+                <a href="/"><img src="images/logo.png" alt="logo" width="90px"></a>
                 <a href="#" class="space">space</a>
             </div>
             <nav id="nav_open" class="text-center">
-                <a href="https://www.kolmix.co.il">ראשי</a>
+                <a href="/">ראשי</a>
                 <a href="playbacks.html">פלייבקים</a>
-                <!-- need to connect to google api -->
-                <a href="#">התחברות/הרשמה</a>
-                <!-- need to link to home page -->
-                <a href="https://www.kolmix.co.il"><img src="images/logo.png" alt="logo"></a>
+                <a id="loginSignupLink" href="#" onclick="showLightBox()">התחברות/הרשמה</a>
+                <a id="userName" class="userAreaAfterLogin">שלום </a>
+                <a href="#" onclick="logout()" id="logoutBtn" class="userAreaAfterLogin">התנתק</a>
+                <a href="/"><img src="images/logo.png" alt="logo"></a>
                 <a href="tel:02-6419996">התקשר עכשיו: 02-6419996</a>
                 <a href="tel:054-8427330">054-8427330</a>
             </nav>
@@ -44,10 +101,10 @@
         <p class="lead"><strong>בקרוב נשלח את הזמנתך לכתובת האימייל שהזנת</strong></p>
         <hr>
         <p>
-            נתקלת בבעיה? <a href="https://www.kolmix.co.il/aboutAndContact">צור קשר</a>
+            נתקלת בבעיה? <a href="aboutAndContact.html">צור קשר</a>
         </p>
         <p class="lead">
-            <a class="btn btn-primary btn-sm" href="https://www.kolmix.co.il" role="button">חזרה לדף הבית</a>
+            <a class="btn btn-primary btn-sm" href="/" role="button">חזרה לדף הבית</a>
         </p>
     </div>
 
@@ -64,7 +121,8 @@
             class="fa fa-whatsapp my-whatsApp"></i>
     </a>
 
-    <script src="burgerAndToggleWidth.js"></script>
+    <script src="burgerToggleWidthAndBadgeQuantity.js"></script>
+    <script src="lightBox.js"></script>
 </body>
 
 </html>

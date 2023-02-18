@@ -20,3 +20,13 @@ function myFunction(x) {
 var x = window.matchMedia("(max-width: 768px)")
 myFunction(x)
 x.addListener(myFunction)
+
+let badgeQuantity = [];
+if (JSON.parse(localStorage.getItem("products")) != null) {
+  badgeQuantity = JSON.parse(localStorage.getItem("products"));
+}
+
+const setBadgeQuantity = () => {
+  document.querySelector('.badge').setAttribute('value', badgeQuantity.length);
+}
+setBadgeQuantity();

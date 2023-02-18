@@ -3,57 +3,76 @@ const init = () => {
 }
 
 let playbacksArr = [];
+let products = [];
+if (JSON.parse(localStorage.getItem("products")) != null) {
+    products = JSON.parse(localStorage.getItem("products"));
+}
 
-const getPlaybacks = async () => {
+
+const getPlaybacks = async (category) => {
     document.querySelector('#id_row').innerHTML = `
         <div class="text-center">
             <img src="images/loading.gif" alt="loading gif" width="200">
         </div>
     `;
-    let url = 'http://localhost:3000/playbacks';
+    let url = 'playbacks';
     try {
         let resp = await axios.get(url);
         playbacksArr = resp.data;
-        createPlaybacks(playbacksArr);
+        createPlaybacks(playbacksArr, category);
     }
     catch (err) {
         console.log(err);
     }
 }
 
-const createPlaybacks = (_ar = playbacksArr, category) => {
+const createPlaybacks = (playbacksArr, category) => {
     document.querySelector('#id_row').innerHTML = '';
-    if (_ar == playbacksArr) {
-        _ar.forEach(item => {
+    if (category == undefined) {
+        playbacksArr.forEach(item => {
             let playback = new Playback("#id_row", item);
-            playback.render(category);
+            playback.render();
         });
     }
-    else {
-        _ar = playbacksArr;
-        let filterData = _ar.filter((playback) => category ? playback.category == category : playback.category !== category);
+    else if (category == 'kolmixSearch') {
+        console.log('hahahah');
+        let inputValue = document.querySelector('#searchInput').value;
+        let filterData = playbacksArr.filter((playback) => playback.name.includes(inputValue));
         filterData.forEach(item => {
             let playback = new Playback("#id_row", item);
-            playback.render(category);
+            playback.render();
+        });
+        if (filterData.length == 0) {
+            document.querySelector('#id_row').innerHTML = `
+                <h2 class="text-center">
+                    😒 מצטערים, אין תוצאה שמתאימה לחיפוש זה...
+                </h2>
+            `;
+        }
+    }
+    else {
+        let filterData = playbacksArr.filter((playback) => playback.category == category);
+        filterData.forEach(item => {
+            let playback = new Playback("#id_row", item);
+            playback.render();
+        });
+    }
+    if (JSON.parse(localStorage.getItem("products")) != null && localStorage.getItem("products").length > 2) {
+        products.forEach(id => {
+            if (document.getElementById(id) != null) {
+                document.getElementById(id).innerHTML = 'נוסף בהצלחה';
+                document.getElementById(id).disabled = true;
+                document.getElementById(id).style.backgroundColor = '#777';
+            }
         });
     }
 }
 
-const search = () => {
-    document.querySelector('#id_row').innerHTML = '';
-    let inputValue = document.querySelector('#searchInput').value;
-    _ar = playbacksArr;
-    let filterData = _ar.filter((playback) => search ? playback.name.includes(inputValue) : playback.name.includes(inputValue));
-    filterData.forEach(item => {
-        let playback = new Playback("#id_row", item);
-        playback.render(search);
-    });
-    if (filterData.length == 0) {
-        document.querySelector('#id_row').innerHTML = `
-            <h2 class="text-center">
-                😒 מצטערים, אין תוצאה שמתאימה לחיפוש זה...
-            </h2>
-        `;
+const storeInLocalStorage = (id) => {
+    if (!products.includes(id)) {
+        products.push(id);
+        localStorage.setItem("products", JSON.stringify(products));
+        location.reload();
     }
 }
 

@@ -17,7 +17,7 @@ class Playback {
                 <h2>${this.name}</h2>
                 <div>קטגוריה: ${this.category}</div>
                 <div>מחיר: ${this.price} ש"ח</div>
-                <button id="${this.id}" class="addToCartBtn" onclick="storeInLocalStorage(${this.id})">הוסף לסל</button>
+                <button id="${this.id}" class="removeFromCartBtn" onclick="removeFromLocalStorage(${this.id})">הסר</button>
                 </div>
         `
     }
