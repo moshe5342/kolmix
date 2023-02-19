@@ -104,6 +104,10 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+    header {
+        min-height: 50px;
+    }
+
     header .burger {
         text-align: right;
         display: flex;
@@ -116,7 +120,7 @@ footer a:hover {
 
     header nav {
         position: absolute;
-        top: 100px;
+        top: 50px;
         right: 0;
         display: none;
         width: 70%;
@@ -135,5 +139,9 @@ footer a:hover {
 
     header nav a:hover {
         background: silver;
+    }
+
+    #nav_open{
+        z-index: 90;
     }
 }

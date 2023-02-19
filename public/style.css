@@ -54,19 +54,21 @@ header nav .userAreaAfterLogin {
     text-align: center;
     font-size: 40px;
     z-index: 100;
+    background-color: #FFF;
+    padding: 5px 0px 0px 5px;
 }
 
-.badge:after{
-    content:attr(value);
-    font-size:15px;
+.badge:after {
+    content: attr(value);
+    font-size: 15px;
     color: #fff;
     background: red;
-    border-radius:50%;
-    padding:1px 5px 2px 5px;
-    position:relative;
-    left:-8px;
-    top:-10px;
-    opacity:0.9;
+    border-radius: 50%;
+    padding: 1px 5px 2px 5px;
+    position: relative;
+    left: -8px;
+    top: -10px;
+    opacity: 0.9;
 }
 
 .main_img {
@@ -155,6 +157,10 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+    header {
+        min-height: 50px;
+    }
+
     header .burger {
         text-align: right;
         display: flex;
@@ -167,7 +173,7 @@ footer a:hover {
 
     header nav {
         position: absolute;
-        top: 100px;
+        top: 50px;
         right: 0;
         display: none;
         width: 70%;
@@ -186,6 +192,10 @@ footer a:hover {
 
     header nav a:hover {
         background: silver;
+    }
+
+    #nav_open{
+        z-index: 90;
     }
 
     /* .lightBox{
@@ -211,5 +221,17 @@ footer a:hover {
 
     .show_for_mobile {
         display: inline;
+    }
+
+    .shopping_cart .badge {
+        position: fixed;
+        top: 5px;
+        left: 17px;
+        color: #47024d;
+        text-align: center;
+        font-size: 35px;
+        z-index: 100;
+        background-color: #FFF;
+        padding: 5px 0px 0px 5px;
     }
 }

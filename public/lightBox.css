@@ -9,6 +9,7 @@
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
 .lightBox .lightBoxInside {
@@ -52,4 +53,36 @@
     color: #000;
     cursor: pointer;
     margin-top: -53%;
+}
+
+@media (max-width: 768px) {
+    .lightBox .lightBoxInside {
+        display: grid;
+        justify-content: space-between;
+        text-align: start;
+        padding-right: 25%;
+        line-height: 1.3em;
+    }
+
+    .lightBox .lightBoxInside h3 {
+        padding-right: 35%;
+    }
+
+    .logIn {
+        padding-bottom: 10px;
+    }
+
+    #signupNewsletterConfirm {
+        zoom: 1.5;
+        margin: 5px 0px 0px 0px;
+    }
+
+    [for="newsletterConfirm"] {
+        margin-top: -10px;
+    }
+
+    .close-btn {
+        margin-top: -395%;
+        margin-right: 95%;
+    }
 }

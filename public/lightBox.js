@@ -1,5 +1,8 @@
 showLightBox = () => {
     document.querySelector('.lightBox').style.display = 'flex';
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector("#nav_open").style.display = 'none';
+    }
 }
 
 hideLightBox = () => {
@@ -124,7 +127,7 @@ const receiveUserDataInAnotherPages = () => {
 
 receiveUserDataInAnotherPages();
 
-const logout = () =>{
+const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     location.reload();

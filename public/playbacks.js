@@ -35,7 +35,6 @@ const createPlaybacks = (playbacksArr, category) => {
         });
     }
     else if (category == 'kolmixSearch') {
-        console.log('hahahah');
         let inputValue = document.querySelector('#searchInput').value;
         let filterData = playbacksArr.filter((playback) => playback.name.includes(inputValue));
         filterData.forEach(item => {

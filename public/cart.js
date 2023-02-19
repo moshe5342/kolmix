@@ -26,7 +26,7 @@ const getPlaybacks = async () => {
             document.querySelector('#sumOrder').innerHTML += sumPrice + ' ש"ח';
         }
         else {
-            document.querySelector('#id_row').innerHTML = '<div class="ifCartEmpty">עגלת הקניות ריקה<br><a href="playbacks.html">חזור לרשימת הפלייבקים</a></div>';
+            document.querySelector('#id_row').innerHTML = '<div class="ifCartEmpty">עגלת הקניות ריקה<br><a href="playbacks.html">לחצו כאן כדי לחזור לרשימת הפלייבקים</a></div>';
         }
     }
     catch (err) {
