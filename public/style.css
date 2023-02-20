@@ -194,17 +194,9 @@ footer a:hover {
         background: silver;
     }
 
-    #nav_open{
+    #nav_open {
         z-index: 90;
     }
-
-    /* .lightBox{
-        max-width: 70%;
-    }
-
-    .lightBox .lightBoxInside {
-        display: inline;
-    } */
 
     .banner {
         min-height: 300px;
@@ -213,6 +205,12 @@ footer a:hover {
         background-position: center;
         color: white;
         margin-bottom: 1px;
+    }
+
+    .form {
+        display: block;
+        justify-content: space-between;
+        text-align: center;
     }
 
     .review_img img {
